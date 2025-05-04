@@ -14,7 +14,7 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ nixpkgs, home-manager, self, ... }: {
     nixosConfigurations = {
       # 这里的 my-nixos 替换成你的主机名称
       Turing = nixpkgs.lib.nixosSystem {
