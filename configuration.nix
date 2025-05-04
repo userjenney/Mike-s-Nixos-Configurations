@@ -20,6 +20,9 @@
     networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
     networking.hostName = "Turing";
 
+  # user config
+  users.users.nic.isNormalUser = true;
+
   # Set your time zone.
     time.timeZone = "Asia/Shanghai";
 
