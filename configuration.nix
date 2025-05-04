@@ -85,12 +85,21 @@
     environment.systemPackages = with pkgs; [
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       alacritty
+      git  
       nekoray
       android-tools
       firefox
       neofetch
       htop
+      hmcl
+      wine
+      hardinfo2
+      telegram-desktop
+      wechat-uos
     ];
+
+  # Allow unfree software 
+  nixpkgs.config.allowUnfree = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -106,10 +115,10 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+    networking.firewall.allowedTCPPorts = [ 7897 2080 ];
+    networking.firewall.allowedUDPPorts = [ 7897 2080 ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+    networking.firewall.enable = true;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
@@ -135,6 +144,9 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.05"; # Did you read the comment?
 
+  # nixos experimental faetures
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   #nixos substituters
   nix.settings.substituters = [
     "https://mirrors.tuna.tsinghua.edu.cn/nix-channel/store"
@@ -147,6 +159,10 @@
     XMODIFIERS = "@im=fcitx";
     EDITOR = "vim";
   };
+
+  # steam program
+  programs.steam.enable = true;
+  programs.steam.extraCompatPackages = with pkgs; [ proton-ge-bin ];
 
 }
 
