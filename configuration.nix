@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports =
@@ -13,6 +13,14 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
+
+  # do garbage collection weekly to keep disk usage low
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 1w";
+  };
 
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
@@ -66,6 +74,10 @@
     pulse.enable = true;
   };
 
+  # bluetooth settings
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
@@ -112,11 +124,21 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
+    settings = {
+      PasswordAuthentication = true;
+      AllowUsers = null; # Allows all users by default. Can be [ "user1" "user2" ]
+      UseDns = true;
+      X11Forwarding = false;
+      PermitRootLogin = "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+    };
+  };
 
   # Open ports in the firewall.
-    networking.firewall.allowedTCPPorts = [ 7897 2080 ];
-    networking.firewall.allowedUDPPorts = [ 7897 2080 ];
+    networking.firewall.allowedTCPPorts = [ 7897 2080 22 ];
+    networking.firewall.allowedUDPPorts = [ 7897 2080 22 ];
   # Or disable the firewall altogether.
     networking.firewall.enable = true;
 
@@ -144,14 +166,13 @@
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
   system.stateVersion = "25.05"; # Did you read the comment?
 
-  # nixos experimental faetures
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   #nixos substituters
   nix.settings = {
     substituters = [
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
     ];
+    experimental-features = [ "nix-command" "flakes" ];
+    auto-optimise-store = true;
   };
 
   # system envieonment var
