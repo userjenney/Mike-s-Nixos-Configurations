@@ -20,9 +20,6 @@
     networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
     networking.hostName = "Turing";
 
-  # user config
-  users.users.nic.isNormalUser = true;
-
   # Set your time zone.
     time.timeZone = "Asia/Shanghai";
 
@@ -64,22 +61,22 @@
   # Enable sound.
   # services.pulseaudio.enable = true;
   # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.alice = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  #   packages = with pkgs; [
-  #     tree
-  #   ];
-  # };
+  users.users.nic = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    packages = with pkgs; [
+      #
+    ];
+  };
 
   # programs.firefox.enable = true;
 
@@ -95,10 +92,10 @@
       neofetch
       htop
       hmcl
-      wine
       hardinfo2
       telegram-desktop
       wechat-uos
+      tree
     ];
 
   # Allow unfree software 
@@ -151,9 +148,11 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   #nixos substituters
-  nix.settings.substituters = [
-    "https://mirrors.tuna.tsinghua.edu.cn/nix-channel/store"
-  ];
+  nix.settings = {
+    substituters = [
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+    ];
+  };
 
   # system envieonment var
   environment.variables = {
