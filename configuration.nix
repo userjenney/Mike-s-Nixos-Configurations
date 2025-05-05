@@ -25,8 +25,8 @@
   # networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-    networking.hostName = "Turing";
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.hostName = "Turing";
 
   # Set your time zone.
     time.timeZone = "Asia/Shanghai";
@@ -167,12 +167,25 @@
   system.stateVersion = "25.05"; # Did you read the comment?
 
   #nixos substituters
-  nix.settings = {
-    substituters = [
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-    ];
-    experimental-features = [ "nix-command" "flakes" ];
-    auto-optimise-store = true;
+   nix.settings = {
+              substituters = [
+                # cache mirror located in China
+                # status: https://mirror.sjtu.edu.cn/
+                #"https://mirror.sjtu.edu.cn/nix-channels/store"
+                # status: https://mirrors.ustc.edu.cn/status/
+                #"https://mirrors.ustc.edu.cn/nix-channels/store"
+                "https://mirrors.tuna.tsinghua.edu.cn/nix-channel/store"
+                "https://hyprland.cachix.org"
+                "https://cache.nixos.org"
+              ];
+
+              trusted-public-keys = [
+                # the default public key of cache.nixos.org, it's built-in, no need to add it here
+                "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+                "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+              ]; 
+              experimental-features = [ "nix-command" "flakes" ];
+              auto-optimise-store = true;
   };
 
   # system envieonment var
@@ -182,10 +195,22 @@
     XMODIFIERS = "@im=fcitx";
     EDITOR = "vim";
   };
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # steam program
   programs.steam.enable = true;
   programs.steam.extraCompatPackages = with pkgs; [ proton-ge-bin ];
 
+  programs.hyprland = {
+    enable = true;
+    # set the flake package
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # make sure to also set the portal package, so that they are in sync
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
+
+  xdg.portal = {
+   enable = true;
+  };
 }
 

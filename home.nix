@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   # 注意修改这里的用户名与用户目录
@@ -95,4 +95,17 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  #  configuration of vscode
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      dracula-theme.theme-dracula
+      vscodevim.vim
+      yzhang.markdown-all-in-one
+    ];
+  };
+
+  # stop check version
+  home.enableNixpkgsReleaseCheck = false;
 }

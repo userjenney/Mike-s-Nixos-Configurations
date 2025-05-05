@@ -24,6 +24,13 @@
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland.url = "github:hyprwm/Hyprland";
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland"; # Prevents version mismatch.
+    };
   };
 
   outputs = inputs@{ nixpkgs, home-manager, self, ... }: {
@@ -35,6 +42,7 @@
         modules = [
           ./configuration.nix
           ./hardware-configuration.nix
+          ./home-manager/hyprland.nix
 
           {
             _module.args = {inherit inputs;};
@@ -54,28 +62,6 @@
             # 使用 home-manager.extraSpecialArgs 自定义传递给 ./home.nix 的参数
             # 取消注释下面这一行，就可以在 home.nix 中使用 flake 的所有 inputs 参数了
             home-manager.extraSpecialArgs = inputs;
-          }
-
-          {
-            # given the users in this list the right to specify additional substituters via:
-            #    1. `nixConfig.substituters` in `flake.nix`
-            nix.settings = {
-              substituters = [
-                # cache mirror located in China
-                # status: https://mirror.sjtu.edu.cn/
-                #"https://mirror.sjtu.edu.cn/nix-channels/store"
-                # status: https://mirrors.ustc.edu.cn/status/
-                # "https://mirrors.ustc.edu.cn/nix-channels/store"
-                "https://mirrors.tuna.tsinghua.edu.cn/nix-channel/store"
-
-                "https://cache.nixos.org"
-              ];
-
-              trusted-public-keys = [
-                # the default public key of cache.nixos.org, it's built-in, no need to add it here
-                "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-              ];
-            };
           }
         ];
       };
