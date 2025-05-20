@@ -58,6 +58,38 @@
     services.displayManager.sddm.enable = true;
     services.desktopManager.plasma6.enable = true;
   
+#
+  fonts = {
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      liberation_ttf
+      fira-code
+      fira-code-symbols
+      mplus-outline-fonts.githubRelease
+      dina-font
+      proggyfonts
+      nerd-fonts.fira-code
+      nerd-fonts.droid-sans-mono
+      ubuntu_font_family
+      liberation_ttf
+      vazir-fonts
+    ];
+
+    enableDefaultPackages = true;
+    enableGhostscriptFonts = true;
+    fontconfig.enable = true;
+    
+    fontconfig = {
+      defaultFonts = {
+      serif = [  "Liberation Serif" "Vazirmatn" ];
+      sansSerif = [ "Ubuntu" "Vazirmatn" ];
+      monospace = [ "Ubuntu Mono" ];
+      };
+    };
+  };
+#
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -84,7 +116,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nic = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       #
     ];
@@ -99,7 +131,6 @@
       alacritty
       git  
       nekoray
-      android-tools
       firefox
       neofetch
       htop
@@ -108,6 +139,9 @@
       telegram-desktop
       wechat-uos
       tree
+      libgcc
+      gcc
+      steam-run
     ];
 
   # Allow unfree software 
@@ -176,7 +210,6 @@
                 #"https://mirrors.ustc.edu.cn/nix-channels/store"
                 "https://mirrors.tuna.tsinghua.edu.cn/nix-channel/store"
                 "https://hyprland.cachix.org"
-                "https://cache.nixos.org"
               ];
 
               trusted-public-keys = [
@@ -212,5 +245,6 @@
   xdg.portal = {
    enable = true;
   };
+
 }
 

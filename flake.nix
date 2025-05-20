@@ -42,7 +42,6 @@
         modules = [
           ./configuration.nix
           ./hardware-configuration.nix
-          ./home-manager/hyprland.nix
 
           {
             _module.args = {inherit inputs;};
