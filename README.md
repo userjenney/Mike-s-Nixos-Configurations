@@ -1,1 +1,1 @@
-# Mike-s-Nixos-Configurations
+# Mike-Nixos-Configurations
