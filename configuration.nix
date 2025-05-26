@@ -208,7 +208,7 @@
                 #"https://mirror.sjtu.edu.cn/nix-channels/store"
                 # status: https://mirrors.ustc.edu.cn/status/
                 #"https://mirrors.ustc.edu.cn/nix-channels/store"
-                "https://mirrors.tuna.tsinghua.edu.cn/nix-channel/store"
+                "https://mirrors.cernet.edu.cn/nix-channel/store"
                 "https://hyprland.cachix.org"
               ];
 
