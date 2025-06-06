@@ -37,7 +37,7 @@
 
   outputs = inputs@{ nixpkgs, home-manager, self, ... }: {
     nixosConfigurations = {
-      # 这里的 my-nixos 替换成你的主机名称
+      # 这里的 Turing 替换成你的主机名称
       Turing = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         #specialArgs = {inherit inputs;};
