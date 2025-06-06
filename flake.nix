@@ -37,7 +37,7 @@
 
   outputs = inputs@{ nixpkgs, home-manager, self, ... }: {
     nixosConfigurations = {
-      # 这里的 Turing 替换成你的主机名称
+      # 这里的 my-nixos 替换成你的主机名称
       Turing = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         #specialArgs = {inherit inputs;};
@@ -54,6 +54,13 @@
           ./waybar.nix
           ./lsp.nix
           ./proxy.nix
+          ./flatpak.nix
+          ./console-utils.nix
+          ./utils.nix
+          ./user.nix
+          ./boot.nix
+         
+     
 
 
 
@@ -70,7 +77,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
-            # 这里的 nic 也得替换成你的用户名
+            # 这里的 ryan 也得替换成你的用户名
             # 这里的 import 函数在前面 Nix 语法中介绍过了，不再赘述
             home-manager.users.nic = import ./home.nix;
 
