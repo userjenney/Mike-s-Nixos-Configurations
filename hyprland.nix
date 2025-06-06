@@ -1,52 +1,40 @@
-{config, pkgs, lib, ...}:
+{ config, inputs, pkgs, lib, ... }:
 
 {
-  wayland.windowManager.hyprland.settings = {
-    "$mod" = "SUPER";
-    bind =
-      [
-        "$mod, F, exec, firefox"
-        ", Print, exec, grimblast copy area"
-      ]
-      ++ (
-        # workspaces
-        # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-        builtins.concatLists (builtins.genList (i:
-            let ws = i + 1;
-            in [
-              "$mod, code:1${toString i}, workspace, ${toString ws}"
-              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-            ]
-          )
-          9)
-      );
-  };
-
-  home.pointerCursor = {
-    gtk.enable = true;
-    # x11.enable = true;
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
-    size = 16;
-  };
-
-  gtk = {
+  # Enable Hyprland
+  programs.hyprland = {
     enable = true;
-
-    theme = {
-      package = pkgs.flat-remix-gtk;
-      name = "Flat-Remix-GTK-Grey-Darkest";
-    };
-
-    iconTheme = {
-      package = pkgs.adwaita-icon-theme;
-      name = "Adwaita";
-    };
-
-    font = {
-      name = "Sans";
-      size = 11;
-    };
+    xwayland.enable = true;
+    withUWSM = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal.hyprland;
   };
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
+  programs.hyprlock.enable = true;
+  services.hypridle.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    pyprland
+    hyprpicker
+    hyprcursor
+    hyprlock
+    hypridle
+    hyprpaper
+
+    inputs.wezterm.packages.${pkgs.system}.default
+    kitty
+    cool-retro-term
+
+    starship
+    helix
+
+    qutebrowser
+    zathura
+    mpv
+    imv
+  ];
+
+  xdg.portal.enable = true;
 }

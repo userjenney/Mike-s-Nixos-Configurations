@@ -32,7 +32,7 @@
     time.timeZone = "Asia/Shanghai";
 
   # Configure network proxy if necessary
-    networking.proxy.default = "http://127.0.0.1:2080/";
+    networking.proxy.default = "http://127.0.0.1:7897/";
 
   # Select internationalisation properties.
   i18n = {
@@ -57,7 +57,7 @@
     services.xserver.enable = true;
     services.displayManager.sddm.enable = true;
     services.desktopManager.plasma6.enable = true;
-  
+    services.xserver.desktopManager.xfce.enable = true;
 #
   fonts = {
     packages = with pkgs; [
@@ -116,7 +116,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nic = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "adbusers" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "adbusers" "audio" "video" "networkmanager" "input" "tss" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       #
     ];
@@ -142,6 +142,14 @@
       libgcc
       gcc
       steam-run
+      vlc
+      gcc
+      libgccjit
+      telegram-desktop
+      tor-browser
+      ppsspp
+      cmake
+      ungoogled-chromium
     ];
 
   # Allow unfree software 
@@ -171,8 +179,8 @@
   };
 
   # Open ports in the firewall.
-    networking.firewall.allowedTCPPorts = [ 7897 2080 22 ];
-    networking.firewall.allowedUDPPorts = [ 7897 2080 22 ];
+    networking.firewall.allowedTCPPorts = [ 7897 2080 22 9050 ];
+    networking.firewall.allowedUDPPorts = [ 7897 2080 22 9050 ];
   # Or disable the firewall altogether.
     networking.firewall.enable = true;
 
@@ -198,7 +206,7 @@
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 
   #nixos substituters
    nix.settings = {
@@ -228,23 +236,10 @@
     XMODIFIERS = "@im=fcitx";
     EDITOR = "vim";
   };
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # steam program
   programs.steam.enable = true;
   programs.steam.extraCompatPackages = with pkgs; [ proton-ge-bin ];
-
-  programs.hyprland = {
-    enable = true;
-    # set the flake package
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    # make sure to also set the portal package, so that they are in sync
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  };
-
-  xdg.portal = {
-   enable = true;
-  };
 
 }
 
