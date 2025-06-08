@@ -25,6 +25,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+
     wezterm.url = "github:wez/wezterm?dir=nix";
   };
 
@@ -42,16 +43,15 @@
           ./keyboard.nix
           ./info-fetch.nix
           ./wasm.nix
-          ./theme.nix
-          ./waybar.nix
-          ./lsp.nix
+          ./windowmanager.nix
           ./proxy.nix
           ./flatpak.nix
           ./console-utils.nix
           ./utils.nix
           ./user.nix
           ./boot.nix
-         
+          ./wine.nix
+ 
      
 
 
@@ -69,7 +69,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
 
-            # 这里的 ryan 也得替换成你的用户名
+            # 这里的 nic 也得替换成你的用户名
             # 这里的 import 函数在前面 Nix 语法中介绍过了，不再赘述
             home-manager.users.nic = import ./home.nix;
 
