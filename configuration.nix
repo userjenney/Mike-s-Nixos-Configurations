@@ -133,7 +133,11 @@
       qbittorrent-enhanced
       foliate
       jamesdsp
-    ];
+      kdePackages.kate
+      home-manager
+      grim
+      slurp
+      ];
 
   # Allow unfree software 
   nixpkgs.config.allowUnfree = true;

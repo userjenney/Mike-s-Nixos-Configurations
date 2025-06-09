@@ -94,7 +94,6 @@
   home.stateVersion = "25.05";
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 
   #  configuration of vscode
   programs.vscode = {
@@ -108,6 +107,10 @@
 
   # stop check version
   home.enableNixpkgsReleaseCheck = false;
+
+  imports = [
+    ./hmconfig/sway.nix
+  ];
 
 
 

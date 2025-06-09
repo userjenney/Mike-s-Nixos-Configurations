@@ -24,7 +24,7 @@
 
 
   programs.waybar.enable = true;
-
+  programs.waybar.systemd.target = "sway-session.target";
 
   programs.uwsm = {
     enable = true;
