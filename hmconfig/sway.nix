@@ -1,18 +1,15 @@
-{ pkgs,lib, ... }:
+{ pkgs, lib, config, ... }:
 
 {
    wayland.windowManager.sway = {
      extraConfig = "
      ";
      config.bars = [];
-     modifier = "Mod4";
-     keybindings = {
-       let
-         modifier = config.wayland.windowManager.sway.config.modifier;
-       in mkOptionDefault {
-         "${modifier}+p" = "exec grim -g ${slurp} - | wl-copy"
-       }
+     config.modifier = "Mod4";
+     config.keybindings = lib.mkOptionDefault lib.getexe {
+       "${config.wayland.windowManager.sway.config.modifier}+p" = "exec grim -g ${pkgs.slurp} - | wl-copy";
      };
+   };
 
    programs.waybar = {
      settings = {
