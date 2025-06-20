@@ -14,7 +14,13 @@
     device = "nodev";
     configurationLimit = 10;
     useOSProber = true;
-  };    
+    extraEntries = ''
+       menuentry "nixos" {
+          set root=(hd1,gpt1)
+           chianloader /boot/EFI/NixOS-boot/grubx64.efi
+       }
+    '';
+};    
 
 
     # do garbage collection weekly to keep disk usage low
