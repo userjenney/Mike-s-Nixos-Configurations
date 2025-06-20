@@ -6,7 +6,7 @@
      ";
      config.bars = [];
      config.modifier = "Mod4";
-     config.keybindings = lib.mkOptionDefault lib.getexe {
+     config.keybindings = lib.mkOptionDefault {
        "${config.wayland.windowManager.sway.config.modifier}+p" = "exec grim -g ${pkgs.slurp} - | wl-copy";
      };
    };
@@ -51,9 +51,6 @@
 
          #// Load Modules
          "include" = [ /home/nic/.config/waybar/modules-background.json ];
-
-         #// Modules configuration
-
      };
 
      style = [

@@ -18,6 +18,8 @@
       swayidle 
       swaylock 
       wmenu
+      slurp
+      sway-launcher-desktop
       ];
   };
 
