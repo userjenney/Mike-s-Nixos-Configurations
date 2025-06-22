@@ -3,7 +3,7 @@
 {
   services.xserver = {
     xkb.layout = "us";
-    xkb.options = "grp:alt_shift_toggle";
+    xkb.options = "grp:caps_toggle,grp_led:scroll";
   };
 
   environment.systemPackages = with pkgs; [

@@ -76,10 +76,6 @@
   };
 #
 
-  # Configure keymap in X11
-  services.xserver.xkb.layout = "us";
-  services.xserver.xkb.options = "eurosign:e,caps:escape";
-
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
@@ -105,7 +101,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    alacritty
     kdePackages.ark
     nekoray
     neofetch
@@ -125,11 +120,11 @@
     foliate
     jamesdsp
     kdePackages.kate
-    home-manager
     qq
     nix-output-monitor
     syncyomi
     libreoffice
+    xterm
   ];
   # Allow unfree software 
   nixpkgs.config.allowUnfree = true;

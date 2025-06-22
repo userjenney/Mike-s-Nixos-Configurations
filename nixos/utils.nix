@@ -18,5 +18,7 @@
     gnumake
     cmake
     libgccjit
+    SDL2
+    sdl3
   ];
 }
