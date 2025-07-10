@@ -43,7 +43,8 @@
     services.xserver.enable = true;
     services.displayManager.sddm.enable = true;
     services.xserver.desktopManager.xfce.enable = true;
-#
+
+  #
   fonts = {
     packages = with pkgs; [
       noto-fonts
@@ -55,11 +56,12 @@
       mplus-outline-fonts.githubRelease
       dina-font
       proggyfonts
-      nerd-fonts.fira-code
-      nerd-fonts.droid-sans-mono
       ubuntu_font_family
       liberation_ttf
       vazir-fonts
+      dejavu_fonts
+      nerd-fonts.fira-code
+      nerd-fonts.droid-sans-mono
     ];
 
     enableDefaultPackages = true;
@@ -82,9 +84,13 @@
   # Enable sound.
   # services.pulseaudio.enable = true;
   # OR
+  xdg.sounds.enable = true;
   services.pipewire = {
     enable = true;
     pulse.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    jack.enable = true;   # JACK 支持
   };
 
   # bluetooth settings
@@ -100,7 +106,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     kdePackages.ark
     nekoray
     neofetch
@@ -125,6 +130,16 @@
     syncyomi
     libreoffice
     xterm
+    helvum
+    sassc
+    ulauncher
+    xfce.xfce4-panel-profiles
+    xfce.xfce4-docklike-plugin
+    conky
+    glava
+    picom
+    nmap
+    android-tools
   ];
   # Allow unfree software 
   nixpkgs.config.allowUnfree = true;

@@ -29,5 +29,10 @@
     ansible-language-server
     hyprls
     helix-gpt
+    nodejs
+    pyright
+    rust-analyzer
+    lua-language-server    
   ];  
+  programs.vim.enable = true;
 }

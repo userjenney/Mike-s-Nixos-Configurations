@@ -3,9 +3,17 @@
 {
    wayland.windowManager.sway = {
      extraConfig = "
+       exec_always export EDITOR=vim
+       bindsym $mod+equal exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
+       bindsym $mod+minus exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+       bindsym $mod+M exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+       bindsym $mod+Ctrl+z exec helvum  # 图形路由控制
      ";
-     config.bars.mode = lib.mkForce "invisible";
-     
+     extraOptions = [
+       "--verbose"
+       "--debug"
+     ];
+     config.bars.mode = lib.mkForce "invisible";     
      config.modifier = "Mod4";
      config.keybindings = lib.mkOptionDefault {
        "${config.wayland.windowManager.sway.config.modifier}+p" = "exec grim -g ${pkgs.slurp} - | wl-copy";

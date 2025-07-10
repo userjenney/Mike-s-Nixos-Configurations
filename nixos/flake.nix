@@ -24,8 +24,8 @@
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-
+    impermanence.url = "github:nix-community/impermanence";
+    rust-overlay.url = "github:oxalica/rust-overlay";
     wezterm.url = "github:wez/wezterm?dir=nix";
   };
 
@@ -51,9 +51,10 @@
           ./user.nix
           ./boot.nix
           ./wine.nix
- 
-     
-
+          ./nix-ld.nix
+          ./rust.nix 
+          ./lsp.nix
+          #./tmpfs.nix
 
 
 

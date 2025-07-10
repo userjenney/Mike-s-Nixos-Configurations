@@ -7,6 +7,7 @@
     enable = true;
     libraries = with pkgs; [
       # List by default
+      openal
       zlib
       zstd
       stdenv.cc.cc
