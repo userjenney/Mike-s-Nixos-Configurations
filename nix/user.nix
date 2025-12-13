@@ -3,7 +3,7 @@
 {
   users.users.nic = {
     isNormalUser = true;
-    hashedPassword = "$y$j9T$LNA4dKecYh/BbeA5pX73Q1$60fKJAMZ6qQbrFeCe7n8tyUlFJamfHtZ3j3oE8g9Jq5";
+    hashedPassword = "$y$j9T$riuS4fG5mYWmq.pdcJ6Zp/$ZJf6LQvGFdEYrXt7eQd1t.n3TI/XhnRuJb46eUHiSB2";
     extraGroups = [ "wheel" "adbusers" "audio" "video" "networkmanager" "input" "tss" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       #

@@ -19,5 +19,6 @@
     gnumake
     cmake
     libgccjit
+    rustup
   ];
 }

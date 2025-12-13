@@ -6,7 +6,7 @@
   boot.loader.systemd-boot.enable = false;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 10;
-  boot.zfs.extraPools = [ "tunk" ];
+  boot.zfs.extraPools = [ "tank" ];
   
 
   # grub

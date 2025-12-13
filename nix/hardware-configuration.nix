@@ -14,37 +14,37 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "tunk/root";
+    { device = "tank/root";
       fsType = "zfs";
-      options = [ "zfsutil" ];
+      options = [ "zfsutil"];
     };
 
   fileSystems."/nix" =
-    { device = "tunk/nix";
+    { device = "tank/nix";
       fsType = "zfs";
       options = [ "zfsutil" ];
     };
 
   fileSystems."/var" =
-    { device = "tunk/var";
+    { device = "tank/var";
       fsType = "zfs";
       options = [ "zfsutil" ];
     };
 
   fileSystems."/home" =
-    { device = "tunk/home";
+    { device = "tank/home";
       fsType = "zfs";
       options = [ "zfsutil" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/B813-9209";
+    { device = "/dev/disk/by-uuid/E5E2-4E31";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-partuuid/33803760-35c5-4eaa-92a2-8e5ed02c1db7"; 
+    [ { device = "/dev/disk/by-partuuid/2385b998-a398-44be-8165-6433804d5b06"; 
         randomEncryption = true;
     } ];
 

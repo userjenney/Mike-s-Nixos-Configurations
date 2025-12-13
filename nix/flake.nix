@@ -13,8 +13,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     #impermanence.url = "github:nix-community/impermanence";
-    rust-overlay.url = "github:oxalica/rust-overlay";
-    wezterm.url = "github:wez/wezterm?dir=nix";
+    #rust-overlay.url = "github:oxalica/rust-overlay";
+    #wezterm.url = "github:wez/wezterm?dir=nix";
   };
 
   outputs = inputs@{ nixpkgs, home-manager, self, ... }: {
@@ -39,7 +39,7 @@
           ./boot.nix
           ./wine.nix
           ./ld.nix
-          ./rust.nix 
+          #./rust.nix 
           ./lsp.nix
           #./tmpfs.nix
           ./kernel.nix

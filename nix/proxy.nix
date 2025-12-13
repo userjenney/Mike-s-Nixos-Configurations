@@ -1,7 +1,7 @@
 { pkgs, config, lib, inputs, ...}:
 
 {
-  networking.proxy.default = "http://127.0.0.1:2080/";
+  networking.proxy.default = "http://127.0.0.1:7897/";
   networking.hostName = "Turing";
   networking.hostId = "8425e349";
   networking.networkmanager.enable= true;
