@@ -1,5 +1,0 @@
-deploy:
-  nixos-rebuild switch --flake --verbose --keep-going --sudo
-
-update:
-  nixos-rebuild switch --flake --verbose --upgrade-all --sudo
