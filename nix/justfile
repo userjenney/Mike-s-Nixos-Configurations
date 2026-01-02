@@ -1,0 +1,8 @@
+deploy:
+  nixos-rebuild switch --flake --keep-going --sudo
+
+update:
+  nixos-rebuild switch --flake --upgrade-all --sudo
+
+time:
+  sudo nix flake update 
