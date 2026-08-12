@@ -163,7 +163,7 @@
   programs.kitty = {
     enable = true;
     settings = {
-      background_opacity = 0.65;
+      background_opacity = 0.50;
       dynamic_background_opacity = "yes";
       enable_audio_bell = false;
       scrollback_lines = 10000;

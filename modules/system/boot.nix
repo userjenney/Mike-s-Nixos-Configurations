@@ -35,7 +35,7 @@
     maxGenerations = 10;
     enableEditor = true;
   };
-  
+
   boot.supportedFilesystems = {
     zfs = lib.mkForce true;
   };

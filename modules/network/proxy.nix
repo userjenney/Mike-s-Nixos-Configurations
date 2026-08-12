@@ -4,12 +4,6 @@
 }:
 
 {
-  /*
-    networking.proxy = {
-      #default = "http://127.0.0.1:7897";
-      noProxy = "";
-    };
-  */
 
   /*
     services.resolved.enable = true;
@@ -31,6 +25,10 @@
       "127.0.0.1"
     ];
   */
+
+  networking.hosts = {
+    "127.0.0.1" = [ "goresee.com" ];
+  };
   networking.networkmanager.enable = true;
   networking.firewall = {
     enable = true;

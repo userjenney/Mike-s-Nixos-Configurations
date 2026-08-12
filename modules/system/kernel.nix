@@ -8,17 +8,19 @@
   security.unprivilegedUsernsClone = true;
   security.virtualisation.flushL1DataCache = null;
   boot.kernelParams = [
-    /*"quiet"
-    "splash"
-    "loglevel=3"
-    "rd.udev.log_priority=3"
-    "systemd.show_status=auto"
-    "fbcon=nodefer"
-    "vt.global_cursor_default=1"
-    "lsm=landlock,lockdown,yama,integrity,apparmor,bpf"
-    "usbcore.autosuspend=-1"
-    "video4linux"
-    "acpi_rev_override=5"*/
+    /*
+      "quiet"
+      "splash"
+      "loglevel=3"
+      "rd.udev.log_priority=3"
+      "systemd.show_status=auto"
+      "fbcon=nodefer"
+      "vt.global_cursor_default=1"
+      "lsm=landlock,lockdown,yama,integrity,apparmor,bpf"
+      "usbcore.autosuspend=-1"
+      "video4linux"
+      "acpi_rev_override=5"
+    */
   ];
   /*
     boot.kernelPatches = [

@@ -46,28 +46,6 @@
             # Adds the NUR overlay
             nur.modules.nixos.default
 
-            (
-              { pkgs, ... }:
-              {
-                nixpkgs.overlays = [
-                  (final: prev: {
-                    # 这种写法会拦截所有的 openldap 编译
-                    openldap = prev.openldap.overrideAttrs (old: {
-                      doCheck = false;
-                    });
-                  })
-                ];
-
-                # 针对 Lutris 及其 32 位依赖的特殊处理
-                # 强制在全局禁用 checkPhase（仅针对 openldap）
-                nixpkgs.config.packageOverrides = pkgs: {
-                  openldap = pkgs.openldap.overrideAttrs (old: {
-                    doCheck = false;
-                  });
-                };
-              }
-            )
-
             {
               _module.args = { inherit inputs; };
             }
@@ -90,7 +68,7 @@
 
             #(
             # { pkgs, ... }:
-            #{
+           #{
             # nixpkgs.overlays = [ (import ./modules/overlays) ];
             #}
             #)

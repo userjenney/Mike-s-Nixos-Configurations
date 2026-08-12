@@ -2,6 +2,8 @@
 
 {
   environment.systemPackages = with pkgs; [
+    xclip
+    wl-clipboard
     nixfmt
     moreutils
     file
