@@ -45,6 +45,9 @@
     todesk
     kdePackages.kdenlive
     openttd
+    nethack
+    openra
+    openspades
   ];
 
   programs.firefox = {

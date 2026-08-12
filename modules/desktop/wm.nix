@@ -96,6 +96,7 @@
     maim
     xclip
     libnotify
+    xinit
   ];
 
   services.xserver.windowManager.i3 = {

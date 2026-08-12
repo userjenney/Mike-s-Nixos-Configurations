@@ -58,7 +58,6 @@
     ./shell.nix
     ./terminal/alacritty.nix
     ./terminal/tmux.nix
-    ./xdg.nix
     ./terminal/ghostty.nix
   ];
 

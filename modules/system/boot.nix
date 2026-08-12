@@ -18,7 +18,7 @@
 
   # grub
   boot.loader.grub = {
-    enable = true;
+    enable = false;
     efiSupport = true;
     zfsSupport = true;
     devices = [
@@ -28,6 +28,14 @@
     useOSProber = false;
   };
 
+  boot.loader.limine = {
+    enable = true;
+    efiSupport = true;
+    biosDevice = "nodev";
+    maxGenerations = 10;
+    enableEditor = true;
+  };
+  
   boot.supportedFilesystems = {
     zfs = lib.mkForce true;
   };

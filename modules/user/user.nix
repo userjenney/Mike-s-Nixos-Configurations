@@ -41,6 +41,7 @@
       "input"
       "libvirtd"
       "vboxuser"
+      "tty"
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
     ];

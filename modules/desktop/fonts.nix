@@ -35,6 +35,7 @@ in
       nerd-fonts.jetbrains-mono
       texlivePackages.jetbrainsmono-otf
       mytex
+      font-bh-lucidatypewriter-100dpi
     ];
 
     enableDefaultPackages = true;
