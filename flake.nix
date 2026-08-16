@@ -68,7 +68,7 @@
 
             #(
             # { pkgs, ... }:
-           #{
+            #{
             # nixpkgs.overlays = [ (import ./modules/overlays) ];
             #}
             #)

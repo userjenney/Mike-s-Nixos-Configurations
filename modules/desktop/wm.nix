@@ -97,6 +97,7 @@
     xclip
     libnotify
     xinit
+    conky
   ];
 
   services.xserver.windowManager.i3 = {
@@ -106,6 +107,7 @@
 
   programs.i3lock = {
     enable = true;
+    package = pkgs.i3lock-fancy-rapid;
   };
 
 }

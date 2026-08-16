@@ -4,33 +4,14 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    links2
-    wget
-    pahole
-    rar
-    p7zip
-    fastfetch
-    ffmpeg
-    steam-run
-    android-tools
-    joe
-    conky
-    #picom
-    sassc
     xfce4-docklike-plugin
     xfce4-panel-profiles
     syncyomi
-    htop
-    tree
-    nix-output-monitor
-    nmap
     home-manager
     zfs
     zfstools
-    pkg-config
     gst_all_1.gstreamer
     gst_all_1.gst-libav
-    nixfmt-tree
   ];
 
   nixpkgs.config.allowUnfree = true;

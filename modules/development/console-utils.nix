@@ -2,6 +2,24 @@
 
 {
   environment.systemPackages = with pkgs; [
+    pahole
+    nmap
+    steam-run
+    sassc
+    fastfetch
+    joe
+    htop
+    tree
+    nix-output-monitor
+    pkg-config
+    nixfmt-tree
+    android-tools
+    wget
+    rar
+    p7zip
+    ffmpeg-full
+    links2
+    unp
     xclip
     wl-clipboard
     nixfmt

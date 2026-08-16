@@ -118,7 +118,10 @@
   };
 
   xsession.windowManager.i3 = {
-    config.bars.mode = "";
+    config.bars = {
+      mode = "invisible";
+      hiddenState = "hide";
+    };
   };
 
   programs.i3status-rust = {

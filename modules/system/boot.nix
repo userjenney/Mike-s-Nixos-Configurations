@@ -32,7 +32,7 @@
     enable = true;
     efiSupport = true;
     biosDevice = "nodev";
-    maxGenerations = 10;
+    maxGenerations = 5;
     enableEditor = true;
   };
 

@@ -25,7 +25,6 @@
     telegram-desktop
     tor-browser
     ppsspp
-    ungoogled-chromium
     qbittorrent-enhanced
     foliate
     kdePackages.ark
@@ -58,4 +57,18 @@
     enable = true;
   };
 
+  programs.chromium = {
+    enable = true;
+    package = pkgs.ungoogled-chromium;
+    commandLineArgs = [
+      "--enable-logging=stderr"
+      "--ignore-gpu-blocklist"
+    ];
+    dictionaries = [
+      pkgs.hunspellDictsChromium.en_US
+    ];
+    nativeMessagingHosts = [
+      pkgs.keepassxc
+    ];
+  };
 }
